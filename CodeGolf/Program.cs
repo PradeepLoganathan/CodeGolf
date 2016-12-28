@@ -11,11 +11,9 @@ namespace CodeGolf
     {
         static void Main(string[] args)
         {
-            StringsandArrays SnA = new StringsandArrays();
+            
 
-            SnA.CheckUniqueString("abcdefghi");
-            SnA.Urlifyastring("This is    a  string that   has to    be urilfyied", 1);
-            SnA.CheckPermutation("Hello", "oelHl");
+            
 
         }
 

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CodeGolf
 {
-    class StringsandArrays
+    public class StringsandArrays
     {
         //Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you
         // cannot use additional data structures?
-       public void CheckUniqueString(string str)
+        public bool CheckUniqueString(string str)
         {
             bool IsUnique = true;
 
@@ -26,15 +26,12 @@ namespace CodeGolf
                 }
             }
 
-            if (IsUnique)
-                Console.WriteLine("String is unique");
-            else
-                Console.WriteLine("String is not unique");
+            return IsUnique;
         }
 
         //Check Permutation:
         //Given two strings, write a method to decide if one is a permutation of the other.
-        public void CheckPermutation(string str1, string str2)
+        public bool CheckPermutation(string str1, string str2)
         {
             char[] c1 = str1.ToCharArray();
             char[] c2 = str2.ToCharArray();
@@ -45,44 +42,38 @@ namespace CodeGolf
             //Array's .Equals method checks for object references and will always return false
             //use LINQ SequenceEquals to check if the Array sequence is the same
             if (c1.SequenceEqual(c2))
-                Console.WriteLine("{0} is a permutation of {1} ", str1, str2);
+                return true;
             else
-                Console.WriteLine("{0} is not a permutation of {1} ", str1, str2);
+                return false;
         }
 
 
         //URLify: Write a method to replace all spaces in a string with '%20'. You may assume that the string
         //has sufficient space at the end to hold the additional characters, and that you are given the "true"
         //length of the string.
-        public void Urlifyastring(string str, int algotype)
+        public string Urlifyastring(string str, int algotype)
         {
-            if (algotype == 1)// additional space and not inplace
+            StringBuilder URLString = new StringBuilder();
+            for (int i = 0; i < str.Length; i++)
             {
-                StringBuilder URLString = new StringBuilder();
-                for (int i = 0; i < str.Length; i++)
+                if (str[i] != ' ')
                 {
-                    if (str[i] != ' ')
-                    {
-                        URLString.Append(str[i]);
-                    }
-                    else
-                    {
-                        URLString.Append("%20");
-                        while (str[i] == ' ')
-                        {
-                            ++i;
-                        }
-
-                        i--;
-                    }
+                    URLString.Append(str[i]);
                 }
+                else
+                {
+                    URLString.Append("%20");
+                    while (str[i] == ' ')
+                    {
+                        ++i;
+                    }
 
-                Console.WriteLine("THe URLified string is {0}", URLString);
+                    i--;
+                }
             }
-            else if (algotype == 2) //Inplace 
-            {
 
-            }
+            return URLString.ToString();
+
 
         }
 
